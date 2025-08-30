@@ -3,9 +3,7 @@
   "description": "Zero-dependency browser-oriented path.normalize",
   "version": "6.0.13",
   "author": {
-    "email": "zac@zacanger.com",
-    "name": "Zac Anger",
-    "url": "http://zacanger.com"
+    "name": "Autumn Z"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -24,12 +22,12 @@
     "test:lint": "standard src",
     "test:tape": "babel-tape-runner src/test.js"
   },
-  "homepage": "https://github.com/zacanger/path-normalize#readme",
+  "homepage": "https://github.com/zautumnz/path-normalize#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacanger/path-normalize.git"
+    "url": "https://github.com/zautumnz/path-normalize.git"
   },
-  "bugs": "https://github.com/zacanger/path-normalize/issues",
+  "bugs": "https://github.com/zautumnz/path-normalize/issues",
   "keywords": [
     "normalize",
     "path",
