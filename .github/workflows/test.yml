@@ -14,6 +14,6 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v6
         with:
-          node-version: lates'lts/*'t
+          node-version: latest
       - run: npm ci
       - run: npm run build
