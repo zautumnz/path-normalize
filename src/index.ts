@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 const SLASH = 47
 const DOT = 46
 
@@ -9,13 +11,16 @@ const assertPath = (path: string): void => {
 }
 
 // this function is directly from node source
+// eslint-disable-next-line complexity
 const posixNormalize = (path: string, allowAboveRoot: boolean): string => {
   let res = ''
   let lastSegmentLength = 0
   let lastSlash = -1
   let dots = 0
+  // eslint-disable-next-line @typescript-eslint/init-declarations
   let code
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i <= path.length; ++i) {
     if (i < path.length) {
       code = path.charCodeAt(i)
@@ -37,6 +42,7 @@ const posixNormalize = (path: string, allowAboveRoot: boolean): string => {
           if (res.length > 2) {
             const lastSlashIndex = res.lastIndexOf('/')
             if (lastSlashIndex !== res.length - 1) {
+              // eslint-disable-next-line max-depth
               if (lastSlashIndex === -1) {
                 res = ''
                 lastSegmentLength = 0
@@ -75,6 +81,7 @@ const posixNormalize = (path: string, allowAboveRoot: boolean): string => {
       lastSlash = i
       dots = 0
     } else if (code === DOT && dots !== -1) {
+      // eslint-disable-next-line no-plusplus
       ++dots
     } else {
       dots = -1

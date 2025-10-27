@@ -15,9 +15,9 @@
     "build": "tsc",
     "clean": "rm -rf lib && mkdir -p lib",
     "postbuild": "cp src/index.js.flow lib/",
-    "prebuild": "run-s -s test:lint test clean",
+    "prebuild": "run-s test clean",
     "preversion": "npm run build",
-    "test": "run-s -s test:lint test:unit",
+    "test": "run-s test:lint test:unit",
     "test:lint": "sortpack && eslint src/*.ts --fix",
     "test:unit": "tsx --test --experimental-test-coverage src/*.test.ts"
   },
