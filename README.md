@@ -21,7 +21,8 @@ Most of this library is directly from
 ## Usage
 
 ```javascript
-const normalize = require('path-normalize')
+import normalize from 'path-normalize'
+// or import { normalize } from 'path-normalize'
 const normal = (somePath) => normalize(somePath)
 ```
 

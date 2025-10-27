@@ -1,8 +1,7 @@
-/* eslint-disable max-depth, max-statements, complexity, max-lines-per-function */
 const SLASH = 47
 const DOT = 46
 
-const assertPath = (path) => {
+const assertPath = (path: string): void => {
   const t = typeof path
   if (t !== 'string') {
     throw new TypeError(`Expected a string, got a ${t}`)
@@ -10,7 +9,7 @@ const assertPath = (path) => {
 }
 
 // this function is directly from node source
-const posixNormalize = (path, allowAboveRoot) => {
+const posixNormalize = (path: string, allowAboveRoot: boolean): string => {
   let res = ''
   let lastSegmentLength = 0
   let lastSlash = -1
@@ -85,7 +84,7 @@ const posixNormalize = (path, allowAboveRoot) => {
   return res
 }
 
-const decode = (s) => {
+const decode = (s: string): string => {
   try {
     return decodeURIComponent(s)
   } catch {
@@ -93,7 +92,7 @@ const decode = (s) => {
   }
 }
 
-const normalize = (p) => {
+export const normalize = (p: string): string => {
   assertPath(p)
 
   let path = p

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "es2021",
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "nodenext",
+    "declaration": true,
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "downlevelIteration": true
+  },
+  "include": [
+    "src"
+  ]
+}
