@@ -13,7 +13,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf lib && mkdir -p lib",
-    "postbuild": "cp src/index.js.flow lib/",
     "prebuild": "run-s test clean",
     "preversion": "npm run build",
     "test": "run-s test:lint test:unit",
