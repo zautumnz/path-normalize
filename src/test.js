@@ -1,30 +1,29 @@
-import test from 'tape'
+import { test } from 'node:test'
+import * as assert from 'node:assert'
 import normalize from '.'
 
-// eslint-disable-next-line max-statements
-test('normalize', (t) => {
-  t.equal(normalize('./fixtures///b/../b/c.js'), 'fixtures/b/c.js')
-  t.equal(normalize('/foo/../../../bar'), '/bar')
-  t.equal(normalize('a//b//../b'), 'a/b')
-  t.equal(normalize('a//b//./c'), 'a/b/c')
-  t.equal(normalize('a//b//.'), 'a/b')
-  t.equal(normalize('/a/b/c/../../../x/y/z'), '/x/y/z')
-  t.equal(normalize('///..//./foo/.//bar'), '/foo/bar')
-  t.equal(normalize('bar/foo../../'), 'bar/')
-  t.equal(normalize('bar/foo../..'), 'bar')
-  t.equal(normalize('bar/foo../../baz'), 'bar/baz')
-  t.equal(normalize('bar/foo../'), 'bar/foo../')
-  t.equal(normalize('bar/foo..'), 'bar/foo..')
-  t.equal(normalize('../foo../../../bar'), '../../bar')
-  t.equal(normalize('../../.././../../../bar'), '../../../../../../bar')
-  t.equal(normalize('../../../foo/../../../bar'), '../../../../../bar')
-  t.equal(normalize('../../../foo/../../../bar/../../'), '../../../../../../')
-  t.equal(normalize('../foobar/barfoo/foo/../../../bar/../../'), '../../')
-  t.equal(
+void test('normalize', () => {
+  assert.equal(normalize('./fixtures///b/../b/c.js'), 'fixtures/b/c.js')
+  assert.equal(normalize('/foo/../../../bar'), '/bar')
+  assert.equal(normalize('a//b//../b'), 'a/b')
+  assert.equal(normalize('a//b//./c'), 'a/b/c')
+  assert.equal(normalize('a//b//.'), 'a/b')
+  assert.equal(normalize('/a/b/c/../../../x/y/z'), '/x/y/z')
+  assert.equal(normalize('///..//./foo/.//bar'), '/foo/bar')
+  assert.equal(normalize('bar/foo../../'), 'bar/')
+  assert.equal(normalize('bar/foo../..'), 'bar')
+  assert.equal(normalize('bar/foo../../baz'), 'bar/baz')
+  assert.equal(normalize('bar/foo../'), 'bar/foo../')
+  assert.equal(normalize('bar/foo..'), 'bar/foo..')
+  assert.equal(normalize('../foo../../../bar'), '../../bar')
+  assert.equal(normalize('../../.././../../../bar'), '../../../../../../bar')
+  assert.equal(normalize('../../../foo/../../../bar'), '../../../../../bar')
+  assert.equal(normalize('../../../foo/../../../bar/../../'), '../../../../../../')
+  assert.equal(normalize('../foobar/barfoo/foo/../../../bar/../../'), '../../')
+  assert.equal(
     normalize('../../../foobar/../../../bar/../../baz'),
     '../../../../../../baz'
   )
-  t.equal(normalize('/../../../foobar/../../../bar/../../baz'), '/baz')
-  t.throws(() => normalize(1), /Expected a string, got a number/)
-  t.end()
+  assert.equal(normalize('/../../../foobar/../../../bar/../../baz'), '/baz')
+  assert.throws(() => normalize(1), /Expected a string, got a number/)
 })

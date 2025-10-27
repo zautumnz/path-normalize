@@ -1,8 +1,9 @@
-/* eslint-disable max-depth, max-statements, complexity, max-lines-per-function */
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 const SLASH = 47
 const DOT = 46
 
-const assertPath = (path) => {
+const assertPath = (path: string): void => {
   const t = typeof path
   if (t !== 'string') {
     throw new TypeError(`Expected a string, got a ${t}`)
@@ -10,13 +11,16 @@ const assertPath = (path) => {
 }
 
 // this function is directly from node source
-const posixNormalize = (path, allowAboveRoot) => {
+// eslint-disable-next-line complexity
+const posixNormalize = (path: string, allowAboveRoot: boolean): string => {
   let res = ''
   let lastSegmentLength = 0
   let lastSlash = -1
   let dots = 0
+  // eslint-disable-next-line @typescript-eslint/init-declarations
   let code
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i <= path.length; ++i) {
     if (i < path.length) {
       code = path.charCodeAt(i)
@@ -38,6 +42,7 @@ const posixNormalize = (path, allowAboveRoot) => {
           if (res.length > 2) {
             const lastSlashIndex = res.lastIndexOf('/')
             if (lastSlashIndex !== res.length - 1) {
+              // eslint-disable-next-line max-depth
               if (lastSlashIndex === -1) {
                 res = ''
                 lastSegmentLength = 0
@@ -76,6 +81,7 @@ const posixNormalize = (path, allowAboveRoot) => {
       lastSlash = i
       dots = 0
     } else if (code === DOT && dots !== -1) {
+      // eslint-disable-next-line no-plusplus
       ++dots
     } else {
       dots = -1
@@ -85,7 +91,7 @@ const posixNormalize = (path, allowAboveRoot) => {
   return res
 }
 
-const decode = (s) => {
+const decode = (s: string): string => {
   try {
     return decodeURIComponent(s)
   } catch {
@@ -93,7 +99,7 @@ const decode = (s) => {
   }
 }
 
-const normalize = (p) => {
+export const normalize = (p: string): string => {
   assertPath(p)
 
   let path = p
