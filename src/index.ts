@@ -99,7 +99,7 @@ const decode = (s: string): string => {
   }
 }
 
-export const normalize = (p: string): string => {
+const normalize = (p: string): string => {
   assertPath(p)
 
   let path = p
@@ -126,4 +126,13 @@ export const normalize = (p: string): string => {
   return path
 }
 
-export default normalize
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const module: { exports: any }
+
+export {}
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+module.exports = normalize
+module.exports.normalize = normalize
+module.exports.default = normalize
+/* eslint-enable @typescript-eslint/no-unsafe-member-access */

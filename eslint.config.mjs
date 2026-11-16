@@ -11,4 +11,5 @@ love.rules = { ...love.rules, ...rulesOverrides }
 export default {
   ...love,
   files: ['src/*.ts'],
+  ignores: ['src/*.d.ts'],
 }
